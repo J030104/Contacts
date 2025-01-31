@@ -578,34 +578,37 @@ public class Contacts1 {
     }
 
     /**
-     * Returns true if the given string as a legal person name
+     * Returns true if the given string is a legal person name.
      *
      * @param name to be validated
+     * @return whether the name is valid
      */
     private static boolean isValidName(String name) {
-        return !name.isEmpty();
-        //TODO: implement a better validation
+        // Check if name is not empty and does not contain any digits (0-9)
+        return name != null && !name.isEmpty() && name.matches("[a-zA-Z\\s]+");
     }
 
     /**
-     * Returns true if the given string as a legal person phone number
+     * Returns true if the given string is a legal person phone number.
      *
      * @param phone to be validated
+     * @return whether the phone number is valid
      */
     private static boolean isValidPhone(String phone) {
-        return !phone.isEmpty();
-        //TODO: implement a better validation
+        // Check if phone is not empty and contains only digits with a length of 8 or 9
+        return phone != null && !phone.isEmpty() && phone.matches("\\d{8,9}");
     }
 
     /**
-     * Returns true if the given string is a legal person email
+     * Returns true if the given string is a legal person email.
      *
      * @param email to be validated
-     * @return whether arg is a valid person email
+     * @return whether the email is valid
      */
     private static boolean isValidEmail(String email) {
-        return !email.isEmpty() && email.contains("@");
-        //TODO: implement a better validation
+        // Check if email is not empty, contains "@", has at least one ".",
+        // and at least 3 letters before "@"
+        return email != null && !email.isEmpty() && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
     }
 
 
